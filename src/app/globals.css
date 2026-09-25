@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0c0c0b;
+  --color-coal: #141413;
+  --color-soot: #1c1c1a;
+  --color-concrete: #8f8e88;
+  --color-bone: #edeae2;
+  --color-bone-dim: #b9b6ad;
+  --color-bronze: #b08d57;
+  --color-line: rgba(237, 234, 226, 0.14);
+
+  --font-display: "Archivo", "Arial Narrow", sans-serif;
+  --font-sans: "Geist", "Inter", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+}
+
+html {
+  background: var(--color-ink);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-bone);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-bronze);
+  color: #0c0c0b;
+}
+
+/* thin scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0c0c0b;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a28;
+  border: 2px solid #0c0c0b;
+  border-radius: 8px;
+}
+
+.display-xl {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+}
+
+.hairline {
+  border-color: var(--color-line);
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px rgba(237, 234, 226, 0.35);
+  color: transparent;
+}
+
+.mask-reveal {
+  overflow: hidden;
+  display: block;
+}
+
+/* custom cursor: hide native only on fine pointers when cursor active */
+@media (pointer: fine) {
+  .northform-cursor-on,
+  .northform-cursor-on a,
+  .northform-cursor-on button {
+    cursor: none;
+  }
+}
+
+img {
+  user-select: none;
+}
+
+/* reduced motion: kill smooth scroll transforms handled in JS via matchMedia */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
